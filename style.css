@@ -4,15 +4,10 @@ Version 0.1.0
 ====================================*/
 
 *{
-
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
-
     font-family:Arial,sans-serif;
-
 }
 
 body{
@@ -26,9 +21,9 @@ body{
 
 }
 
-/*==========================
+/*==============================
 画面
-==========================*/
+==============================*/
 
 .screen{
 
@@ -52,9 +47,9 @@ body{
 
 }
 
-/*==========================
+/*==============================
 タイトル
-==========================*/
+==============================*/
 
 h1{
 
@@ -85,9 +80,9 @@ h1{
     text-shadow:0 0 10px #4ecfff;
 
 }
-/*==========================
+/*==============================
 ボタン
-==========================*/
+==============================*/
 
 button{
 
@@ -111,7 +106,7 @@ button{
 
     border:2px solid #57d4ff;
 
-    box-shadow:0 0 15px rgba(0,170,255,.5);
+    box-shadow:0 0 15px rgba(0,170,255,.45);
 
     transition:.2s;
 
@@ -141,9 +136,9 @@ button:disabled{
 
 }
 
-/*==========================
+/*==============================
 ゲーム画面
-==========================*/
+==============================*/
 
 #gameScreen{
 
@@ -155,9 +150,9 @@ button:disabled{
 
 }
 
-/*==========================
+/*==============================
 上部UI
-==========================*/
+==============================*/
 
 #topBar{
 
@@ -182,26 +177,26 @@ button:disabled{
 
     border-radius:16px;
 
-    border:2px solid #53d2ff;
+    border:2px solid #57d4ff;
 
     background:rgba(255,255,255,.08);
 
     display:flex;
 
-    flex-direction:column;
-
     justify-content:center;
 
     align-items:center;
+
+    flex-direction:column;
 
     font-weight:bold;
 
     box-shadow:0 0 15px rgba(0,170,255,.45);
 
 }
-/*==========================
+/*==============================
 フィールド
-==========================*/
+==============================*/
 
 #field{
 
@@ -213,9 +208,9 @@ button:disabled{
 
 }
 
-/*==========================
-消しゴム
-==========================*/
+/*==============================
+プレイヤー
+==============================*/
 
 .eraser{
 
@@ -245,9 +240,9 @@ button:disabled{
 
 }
 
-/*==========================
-配置
-==========================*/
+/*==============================
+プレイヤー配置
+==============================*/
 
 #cpu1{
 
@@ -259,9 +254,9 @@ button:disabled{
 
 #cpu2{
 
-    left:78%;
+    left:80%;
 
-    top:32%;
+    top:34%;
 
 }
 
@@ -269,7 +264,7 @@ button:disabled{
 
     left:65%;
 
-    top:68%;
+    top:70%;
 
 }
 
@@ -277,7 +272,7 @@ button:disabled{
 
     left:35%;
 
-    top:68%;
+    top:70%;
 
 }
 
@@ -289,9 +284,9 @@ button:disabled{
 
 }
 
-/*==========================
+/*==============================
 ログ
-==========================*/
+==============================*/
 
 #log{
 
@@ -299,7 +294,7 @@ button:disabled{
 
     right:15px;
 
-    bottom:145px;
+    bottom:140px;
 
     width:220px;
 
@@ -321,13 +316,17 @@ button:disabled{
 
 }
 
-/*==========================
+/*==============================
 手札
-==========================*/
+==============================*/
 
 #hand{
 
     height:120px;
+
+    border-top:2px solid #57d4ff;
+
+    background:rgba(0,0,0,.25);
 
     display:flex;
 
@@ -337,11 +336,13 @@ button:disabled{
 
     gap:10px;
 
-    border-top:2px solid #57d4ff;
-
-    background:rgba(0,0,0,.25);
+    padding:10px;
 
 }
+
+/*==============================
+カード枠
+==============================*/
 
 .cardSlot{
 
@@ -351,27 +352,17 @@ button:disabled{
 
     border-radius:12px;
 
-    background:rgba(255,255,255,.08);
-
     border:2px solid #57d4ff;
+
+    background:rgba(255,255,255,.08);
 
     box-shadow:0 0 10px rgba(0,170,255,.4);
 
-    transition:.2s;
-
 }
 
-.cardSlot:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 0 20px rgba(80,210,255,.9);
-
-}
-
-/*==========================
+/*==============================
 HPバー
-==========================*/
+==============================*/
 
 .hpBar{
 
@@ -396,70 +387,5 @@ HPバー
     height:100%;
 
     background:linear-gradient(90deg,#ff4d4d,#ff8d8d);
-
-}
-/*==========================
-カード
-==========================*/
-
-.card{
-
-    width:90px;
-
-    height:130px;
-
-    border-radius:14px;
-
-    border:2px solid #4fd3ff;
-
-    background:linear-gradient(#1b6fd3,#123d75);
-
-    color:white;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:8px;
-
-    box-shadow:0 0 15px rgba(0,170,255,.5);
-
-    transition:.2s;
-
-}
-
-.card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 0 25px #4fd3ff;
-
-}
-
-.cardType{
-
-    font-size:24px;
-
-}
-
-.cardName{
-
-    font-size:13px;
-
-    text-align:center;
-
-    font-weight:bold;
-
-}
-
-.cardPower{
-
-    font-size:18px;
-
-    color:#ffe36b;
 
 }

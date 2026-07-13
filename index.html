@@ -5,124 +5,172 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>ERASER CLASH</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 
 </head>
 
 <body>
 
-    <!-- タイトル画面 -->
-    <div id="titleScreen" class="screen">
+    <!--==============================
+        タイトル画面
+    ==============================-->
+
+    <div id="titleScreen"
+         class="screen">
 
         <h1>ERASER CLASH</h1>
 
         <p class="subTitle">
+
             LAST ERASER WINS
+
         </p>
 
         <button id="cpuButton">
+
             CPU BATTLE
+
         </button>
 
         <button disabled>
+
             LOCAL BATTLE
+            <br>
+            (Coming Soon)
+
         </button>
 
         <button disabled>
+
             CARD BOOK
+            <br>
+            (Coming Soon)
+
         </button>
 
         <button disabled>
+
             ERASER BOOK
+            <br>
+            (Coming Soon)
+
         </button>
 
         <button disabled>
+
             SETTINGS
+            <br>
+            (Coming Soon)
+
         </button>
 
     </div>
-        <!-- 難易度選択画面 -->
-    <div id="difficultyScreen" class="screen hidden">
+        <!--==============================
+        難易度選択画面
+    ==============================-->
+
+    <div id="difficultyScreen"
+         class="screen hidden">
 
         <h2>SELECT CPU LEVEL</h2>
 
-        <button class="difficulty" data-level="easy">
+        <button class="difficulty"
+                data-level="easy">
+
             EASY
+
         </button>
 
-        <button class="difficulty" data-level="normal">
+        <button class="difficulty"
+                data-level="normal">
+
             NORMAL
+
         </button>
 
-        <button class="difficulty" data-level="hard">
+        <button class="difficulty"
+                data-level="hard">
+
             HARD
+
         </button>
 
-        <button class="difficulty" data-level="master">
+        <button class="difficulty"
+                data-level="master">
+
             MASTER
+
         </button>
 
     </div>
 
-    <!-- ゲーム画面 -->
-    <div id="gameScreen" class="screen hidden">
+    <!--==============================
+        ゲーム画面
+    ==============================-->
+
+    <div id="gameScreen"
+         class="screen hidden">
+
+        <!-- 上部UI -->
 
         <div id="topBar">
 
             <div id="deckArea">
+
                 🃏<br>
+
                 山札
+
             </div>
 
             <div id="trashArea">
+
                 🗑️<br>
+
                 捨札
+
             </div>
 
         </div>
 
+        <!-- フィールド -->
+
         <div id="field">
 
-            <div id="cpu1" class="eraser"></div>
+            <div id="cpu1"
+                 class="eraser"></div>
 
-            <div id="cpu2" class="eraser"></div>
+            <div id="cpu2"
+                 class="eraser"></div>
 
-            <div id="cpu3" class="eraser"></div>
+            <div id="cpu3"
+                 class="eraser"></div>
 
-            <div id="cpu4" class="eraser"></div>
+            <div id="cpu4"
+                 class="eraser"></div>
 
-            <div id="player" class="eraser"></div>
+            <div id="player"
+                 class="eraser"></div>
 
         </div>
-                <div id="log">
+                <!-- ログ -->
+
+        <div id="log">
 
             ERASER CLASHへようこそ！
 
         </div>
 
+        <!-- 手札 -->
+
         <div id="hand">
 
-    <div class="card">
-
-        <div class="cardType">⚔️</div>
-
-        <div class="cardName">
-
-            ぺんてるスマッシュ
-
-        </div>
-
-        <div class="cardPower">
-
-            ATK 5
-
-        </div>
-
-    </div>
         </div>
 
     </div>
