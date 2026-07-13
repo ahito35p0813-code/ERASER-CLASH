@@ -236,16 +236,182 @@ function setupGame(){
 
     createDeck();
 
-    const hand = [];
+    drawOpeningHand();
 
-    hand.push(drawCard());
+    renderHand();
 
-    hand.push(drawCard());
-
-    console.log("初期手札", hand);
+console.log("初期手札", game.hand);
 
     addLog("山札を作成しました。");
 
     addLog("初期手札を2枚配りました。");
+
+}
+/*==============================
+プレイヤーの手札
+==============================*/
+
+game.hand = [];
+
+/*==============================
+カードを引く
+==============================*/
+
+function drawToHand(){
+
+    const card = drawCard();
+
+    if(card){
+
+        game.hand.push(card);
+
+    }
+
+}
+
+/*==============================
+初期手札
+==============================*/
+
+function drawOpeningHand(){
+
+    game.hand = [];
+
+    drawToHand();
+
+    drawToHand();
+
+}
+/*==============================
+カード表示
+==============================*/
+
+function renderHand(){
+
+    const hand = document.getElementById("hand");
+
+    hand.innerHTML = "";
+
+    game.hand.forEach(card=>{
+
+        hand.appendChild(createCard(card));
+
+    });
+
+}
+/*==============================
+カード生成
+==============================*/
+
+function createCard(card){
+
+    const element = document.createElement("div");
+
+    element.className = "card";
+
+    if(card.type === "attack"){
+
+        element.classList.add("cardAttack");
+
+    }
+
+    else if(card.type === "defense"){
+
+        element.classList.add("cardDefense");
+
+    }
+
+    else if(card.type === "ability"){
+
+        element.classList.add("cardAbility");
+
+    }
+
+    else if(card.type === "field"){
+
+        element.classList.add("cardField");
+
+    }
+
+    element.innerHTML = `
+
+        <div class="cardType">${getCardIcon(card.type)}</div>
+
+        <div class="cardName">${card.name}</div>
+
+        <div class="cardAttribute">
+
+    ${getCardAttribute(card)}
+
+</div>
+
+<div class="cardPower">
+
+    ${getCardPower(card)}
+
+</div>
+
+    `;
+
+    return element;
+
+}
+/*==============================
+カードアイコン
+==============================*/
+
+function getCardIcon(type){
+
+    switch(type){
+
+        case "attack":
+            return "⚔️";
+
+        case "defense":
+            return "🛡️";
+
+        case "ability":
+            return "✨";
+
+        case "field":
+            return "🌍";
+
+        default:
+            return "❓";
+
+    }
+
+}
+/*==============================
+カード情報
+==============================*/
+
+function getCardPower(card){
+
+    if(card.type === "attack"){
+
+        return "ATK " + card.damage;
+
+    }
+
+    if(card.type === "defense"){
+
+        return "HP " + card.hp;
+
+    }
+
+    return "";
+
+}
+
+function getCardAttribute(card){
+
+    if(card.attribute){
+
+        return card.attribute;
+
+    }
+
+    return "";
 
 }

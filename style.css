@@ -389,3 +389,200 @@ HPバー
     background:linear-gradient(90deg,#ff4d4d,#ff8d8d);
 
 }
+/*==============================
+カードデザイン
+==============================*/
+
+.card{
+
+    width:90px;
+
+    height:130px;
+
+    border-radius:14px;
+
+    border:2px solid #57d4ff;
+
+    background:linear-gradient(#215db3,#153b70);
+
+    color:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:8px;
+
+    box-shadow:0 0 12px rgba(0,170,255,.5);
+
+    transition:.2s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 0 20px rgba(80,210,255,.8);
+
+}
+
+.cardName{
+
+    font-size:13px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+.cardPower{
+
+    font-size:18px;
+
+    color:#ffe36b;
+
+    font-weight:bold;
+
+}
+/*==============================
+カードタイプ
+==============================*/
+
+.cardAttack{
+
+    border-color:#ff5555;
+
+    background:linear-gradient(#b82929,#701818);
+
+}
+
+.cardDefense{
+
+    border-color:#4da6ff;
+
+    background:linear-gradient(#2b6fc4,#1b4070);
+
+}
+
+.cardAbility{
+
+    border-color:#4dff88;
+
+    background:linear-gradient(#24884f,#195b37);
+
+}
+
+.cardField{
+
+    border-color:#c36bff;
+
+    background:linear-gradient(#7d3ab8,#52247c);
+
+}
+
+/*==============================
+カード文字
+==============================*/
+
+.cardType{
+
+    font-size:24px;
+
+}
+
+.cardAttribute{
+
+    font-size:11px;
+
+    color:#d9f6ff;
+
+}
+
+.cardDescription{
+
+    font-size:10px;
+
+    text-align:center;
+
+    line-height:1.2;
+
+}
+/*==============================
+手札のカード
+==============================*/
+
+#hand{
+
+    height:150px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:10px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+}
+
+/*==============================
+カードアニメーション
+==============================*/
+
+.card{
+
+    flex-shrink:0;
+
+    cursor:pointer;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px) scale(1.05);
+
+}
+
+.card:active{
+
+    transform:translateY(-4px) scale(.98);
+
+}
+
+/*==============================
+スクロールバー
+==============================*/
+
+#hand::-webkit-scrollbar{
+
+    height:8px;
+
+}
+
+#hand::-webkit-scrollbar-track{
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:10px;
+
+}
+
+#hand::-webkit-scrollbar-thumb{
+
+    background:#4ecfff;
+
+    border-radius:10px;
+
+}
