@@ -65,6 +65,10 @@ function startGame(level){
         "ゲーム開始！<br>" +
         "CPUレベル：" + level;
 
+    game.level = level;
+
+    setupGame();
+    
 }
 
 /*==============================
@@ -245,19 +249,3 @@ function setupGame(){
     addLog("初期手札を2枚配りました。");
 
 }
-
-/*==============================
-ゲーム開始時に初期化
-==============================*/
-
-const oldStartGame = startGame;
-
-startGame = function(level){
-
-    oldStartGame(level);
-
-    game.level = level;
-
-    setupGame();
-
-};
