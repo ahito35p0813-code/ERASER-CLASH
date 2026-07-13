@@ -39,6 +39,10 @@ body{
     align-items:center;
 }
 
+.hidden{
+    display:none;
+}
+
 /*==============================
 タイトル
 ==============================*/
@@ -269,7 +273,7 @@ button:disabled{
 
     left:50%;
 
-    top:88%;
+    top:82%;
 
 }
 
