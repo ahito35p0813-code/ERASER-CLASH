@@ -173,3 +173,62 @@ button:disabled{
     overflow:auto;
 
 }
+
+/*==========================
+  ERASER CLASH v0.2
+==========================*/
+
+body{
+
+    background:
+    radial-gradient(circle at top,#17345d,#111);
+
+    color:white;
+
+}
+
+/* タイトル */
+
+h1{
+
+    font-size:58px;
+
+    letter-spacing:4px;
+
+    text-shadow:
+    0 0 12px #4ec5ff,
+    0 0 24px #008cff;
+
+}
+
+/* ボタン */
+
+button{
+
+    background:#0d4d88;
+
+    color:white;
+
+    border:2px solid #57c7ff;
+
+    box-shadow:
+    0 0 10px #008cff;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 20px #57c7ff;
+
+}
+
+button:active{
+
+    transform:scale(.95);
+
+}
