@@ -297,7 +297,7 @@ function renderHand(){
         hand.appendChild(createCard(card));
 
     });
-
+alert("手札：" + game.hand.length);
 }
 /*==============================
 カード生成
