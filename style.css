@@ -1,0 +1,175 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#1b1b1b;
+    color:white;
+}
+
+.screen{
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+.hidden{
+    display:none;
+}
+
+h1{
+    font-size:52px;
+    margin-bottom:25px;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+button{
+
+    width:240px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#2f2f2f;
+
+    color:white;
+
+    font-size:20px;
+
+}
+
+button:disabled{
+
+    opacity:.4;
+
+}
+
+#gameScreen{
+
+    position:relative;
+
+    justify-content:flex-start;
+
+    align-items:stretch;
+
+}
+
+#field{
+
+    position:relative;
+
+    width:100%;
+
+    height:75%;
+
+}
+
+.eraser{
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    border:3px solid white;
+
+    border-radius:18px;
+
+    background:#444;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transform:translate(-50%,-50%);
+
+}
+
+#player{
+
+    left:50%;
+
+    top:88%;
+
+}
+
+#cpu1{
+
+    left:50%;
+
+    top:15%;
+
+}
+
+#cpu2{
+
+    left:78%;
+
+    top:35%;
+
+}
+
+#cpu3{
+
+    left:22%;
+
+    top:35%;
+
+}
+
+#cpu4{
+
+    left:50%;
+
+    top:55%;
+
+}
+
+#hand{
+
+    height:120px;
+
+    border-top:3px solid white;
+
+}
+
+#log{
+
+    position:absolute;
+
+    right:10px;
+
+    bottom:130px;
+
+    width:220px;
+
+    height:150px;
+
+    border:2px solid white;
+
+    padding:8px;
+
+    overflow:auto;
+
+}

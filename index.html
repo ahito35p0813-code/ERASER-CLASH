@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ERASER CLASH</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div id="titleScreen" class="screen">
+
+    <h1>ERASER CLASH</h1>
+
+    <button id="cpuButton">
+        CPU BATTLE
+    </button>
+
+    <button disabled>
+        LOCAL BATTLE
+    </button>
+
+    <button disabled>
+        CARD BOOK
+    </button>
+
+    <button disabled>
+        ERASER BOOK
+    </button>
+
+    <button disabled>
+        SETTINGS
+    </button>
+
+</div>
+
+
+
+<div id="difficultyScreen" class="screen hidden">
+
+    <h2>Select CPU</h2>
+
+    <button class="difficulty" data-level="easy">
+        EASY
+    </button>
+
+    <button class="difficulty" data-level="normal">
+        NORMAL
+    </button>
+
+    <button class="difficulty" data-level="hard">
+        HARD
+    </button>
+
+    <button class="difficulty" data-level="master">
+        MASTER
+    </button>
+
+</div>
+
+
+
+<div id="gameScreen" class="screen hidden">
+
+    <div id="field">
+
+        <div id="cpu1" class="eraser"></div>
+
+        <div id="cpu2" class="eraser"></div>
+
+        <div id="cpu3" class="eraser"></div>
+
+        <div id="cpu4" class="eraser"></div>
+
+        <div id="player" class="eraser"></div>
+
+    </div>
+
+    <div id="hand"></div>
+
+    <div id="log"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
