@@ -124,3 +124,140 @@ window.addEventListener("load",()=>{
     console.log("ERASER CLASH v0.1.0");
 
 });
+/*==============================
+カードデータ
+==============================*/
+
+const cardData = [
+
+    {
+        name:"ぺんてるスマッシュ",
+        type:"attack",
+        damage:5,
+        attribute:"シャーペン"
+    },
+
+    {
+        name:"S20",
+        type:"attack",
+        damage:4,
+        attribute:"シャーペン"
+    },
+
+    {
+        name:"ステッドラー925-35",
+        type:"attack",
+        damage:2,
+        attribute:"シャーペン",
+        pierce:true
+    },
+
+    {
+        name:"フリクションボールペン",
+        type:"attack",
+        damage:3,
+        attribute:"ボールペン",
+        ink:1
+    },
+
+    {
+        name:"クルトガKS",
+        type:"attack",
+        damage:5,
+        attribute:"シャーペン"
+    }
+
+];
+/*==============================
+山札生成
+==============================*/
+
+function createDeck(){
+
+    game.deck = [];
+
+    cardData.forEach(card => {
+
+        // 今は各カードを2枚ずつ入れる
+        game.deck.push({...card});
+        game.deck.push({...card});
+
+    });
+
+    shuffleDeck();
+
+}
+
+/*==============================
+山札シャッフル
+==============================*/
+
+function shuffleDeck(){
+
+    for(let i = game.deck.length - 1; i > 0; i--){
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [game.deck[i], game.deck[j]] =
+        [game.deck[j], game.deck[i]];
+
+    }
+
+}
+/*==============================
+初期手札
+==============================*/
+
+function drawCard(){
+
+    if(game.deck.length === 0){
+
+        addLog("山札がありません。");
+
+        return null;
+
+    }
+
+    return game.deck.shift();
+
+}
+
+function setupGame(){
+
+    game.deck = [];
+
+    game.trash = [];
+
+    game.players = [];
+
+    createDeck();
+
+    const hand = [];
+
+    hand.push(drawCard());
+
+    hand.push(drawCard());
+
+    console.log("初期手札", hand);
+
+    addLog("山札を作成しました。");
+
+    addLog("初期手札を2枚配りました。");
+
+}
+
+/*==============================
+ゲーム開始時に初期化
+==============================*/
+
+const oldStartGame = startGame;
+
+startGame = function(level){
+
+    oldStartGame(level);
+
+    game.level = level;
+
+    setupGame();
+
+};
