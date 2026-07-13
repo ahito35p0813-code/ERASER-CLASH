@@ -1,94 +1,127 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ERASER CLASH</title>
+    <title>ERASER CLASH</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div id="titleScreen" class="screen">
+    <!-- タイトル画面 -->
+    <div id="titleScreen" class="screen">
 
-    <h1>ERASER CLASH</h1>
+        <h1>ERASER CLASH</h1>
 
-    <button id="cpuButton">
-        CPU BATTLE
-    </button>
+        <p class="subTitle">
+            LAST ERASER WINS
+        </p>
 
-    <button disabled>
-        LOCAL BATTLE
-    </button>
+        <button id="cpuButton">
+            CPU BATTLE
+        </button>
 
-    <button disabled>
-        CARD BOOK
-    </button>
+        <button disabled>
+            LOCAL BATTLE
+        </button>
 
-    <button disabled>
-        ERASER BOOK
-    </button>
+        <button disabled>
+            CARD BOOK
+        </button>
 
-    <button disabled>
-        SETTINGS
-    </button>
+        <button disabled>
+            ERASER BOOK
+        </button>
 
-</div>
+        <button disabled>
+            SETTINGS
+        </button>
 
+    </div>
+        <!-- 難易度選択画面 -->
+    <div id="difficultyScreen" class="screen hidden">
 
+        <h2>SELECT CPU LEVEL</h2>
 
-<div id="difficultyScreen" class="screen hidden">
+        <button class="difficulty" data-level="easy">
+            EASY
+        </button>
 
-    <h2>Select CPU</h2>
+        <button class="difficulty" data-level="normal">
+            NORMAL
+        </button>
 
-    <button class="difficulty" data-level="easy">
-        EASY
-    </button>
+        <button class="difficulty" data-level="hard">
+            HARD
+        </button>
 
-    <button class="difficulty" data-level="normal">
-        NORMAL
-    </button>
-
-    <button class="difficulty" data-level="hard">
-        HARD
-    </button>
-
-    <button class="difficulty" data-level="master">
-        MASTER
-    </button>
-
-</div>
-
-
-
-<div id="gameScreen" class="screen hidden">
-
-    <div id="field">
-
-        <div id="cpu1" class="eraser"></div>
-
-        <div id="cpu2" class="eraser"></div>
-
-        <div id="cpu3" class="eraser"></div>
-
-        <div id="cpu4" class="eraser"></div>
-
-        <div id="player" class="eraser"></div>
+        <button class="difficulty" data-level="master">
+            MASTER
+        </button>
 
     </div>
 
-    <div id="hand"></div>
+    <!-- ゲーム画面 -->
+    <div id="gameScreen" class="screen hidden">
 
-    <div id="log"></div>
+        <div id="topBar">
 
-</div>
+            <div id="deckArea">
+                🃏<br>
+                山札
+            </div>
 
-<script src="script.js"></script>
+            <div id="trashArea">
+                🗑️<br>
+                捨札
+            </div>
+
+        </div>
+
+        <div id="field">
+
+            <div id="cpu1" class="eraser"></div>
+
+            <div id="cpu2" class="eraser"></div>
+
+            <div id="cpu3" class="eraser"></div>
+
+            <div id="cpu4" class="eraser"></div>
+
+            <div id="player" class="eraser"></div>
+
+        </div>
+                <div id="log">
+
+            ERASER CLASHへようこそ！
+
+        </div>
+
+        <div id="hand">
+
+            <div class="cardSlot"></div>
+
+            <div class="cardSlot"></div>
+
+            <div class="cardSlot"></div>
+
+            <div class="cardSlot"></div>
+
+            <div class="cardSlot"></div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
