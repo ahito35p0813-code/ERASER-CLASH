@@ -1,5 +1,10 @@
 "use strict";
 
+/*====================================
+ERASER CLASH
+Version 0.2.0
+====================================*/
+
 /*==============================
 画面
 ==============================*/
@@ -13,80 +18,9 @@ const gameScreen = document.getElementById("gameScreen");
 ==============================*/
 
 const cpuButton = document.getElementById("cpuButton");
-const difficultyButtons = document.querySelectorAll(".difficulty");
+const difficultyButtons =
+document.querySelectorAll(".difficulty");
 
-/*==============================
-タイトル → 難易度
-==============================*/
-
-cpuButton.addEventListener("click", () => {
-
-    titleScreen.classList.add("hidden");
-
-    difficultyScreen.classList.remove("hidden");
-
-});
-
-/*==============================
-難易度 → ゲーム
-==============================*/
-
-difficultyButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        difficultyScreen.classList.add("hidden");
-
-        gameScreen.classList.remove("hidden");
-
-        startGame(button.dataset.level);
-
-    });
-
-});
-/*==============================
-ゲーム開始
-==============================*/
-
-function startGame(level){
-
-    createPlayer("player","あなた",20);
-
-    createPlayer("cpu1","CPU1",20);
-
-    createPlayer("cpu2","CPU2",20);
-
-    createPlayer("cpu3","CPU3",20);
-
-    createPlayer("cpu4","CPU4",20);
-
-    document.getElementById("log").innerHTML =
-        "<b>ERASER CLASH</b><br><br>" +
-        "ゲーム開始！<br>" +
-        "CPUレベル：" + level;
-
-    game.level = level;
-
-    setupGame();
-    
-}
-
-/*==============================
-プレイヤー表示
-==============================*/
-
-function createPlayer(id,name,hp){
-
-    document.getElementById(id).innerHTML = `
-        <strong>${name}</strong>
-        <br>
-        ❤️ ${hp}/20
-        <div class="hpBar">
-            <div class="hp"></div>
-        </div>
-    `;
-
-}
 /*==============================
 ゲームデータ
 ==============================*/
@@ -101,33 +35,12 @@ const game = {
 
     trash : [],
 
+    hand : [],
+
     players : []
 
 };
 
-/*==============================
-ログ追加
-==============================*/
-
-function addLog(text){
-
-    const log = document.getElementById("log");
-
-    log.innerHTML += "<br>" + text;
-
-    log.scrollTop = log.scrollHeight;
-
-}
-
-/*==============================
-初期化
-==============================*/
-
-window.addEventListener("load",()=>{
-
-    console.log("ERASER CLASH v0.1.0");
-
-});
 /*==============================
 カードデータ
 ==============================*/
@@ -172,6 +85,145 @@ const cardData = [
     }
 
 ];
+
+/*==============================
+画面切り替え
+==============================*/
+
+cpuButton.addEventListener("click",()=>{
+
+    titleScreen.classList.add("hidden");
+
+    difficultyScreen.classList.remove("hidden");
+
+});
+
+difficultyButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        game.level = button.dataset.level;
+
+        difficultyScreen.classList.add("hidden");
+
+        gameScreen.classList.remove("hidden");
+
+        startGame();
+
+    });
+
+});
+
+/*==============================
+ゲーム開始
+==============================*/
+
+function startGame(){
+
+    createRandomErasers();
+
+    updatePlayers();
+
+    createDeck();
+
+    drawOpeningHand();
+
+    renderHand();
+
+    addLog("ゲーム開始！");
+    addLog("CPUレベル：" + game.level);
+
+}
+
+/*==============================
+プレイヤー作成
+==============================*/
+
+function createPlayers(){
+
+    game.players = [
+
+        {
+            id:"player",
+            name:"あなた",
+            hp:20,
+            maxHp:20
+        },
+
+        {
+            id:"cpu1",
+            name:"CPU1",
+            hp:20,
+            maxHp:20
+        },
+
+        {
+            id:"cpu2",
+            name:"CPU2",
+            hp:20,
+            maxHp:20
+        },
+
+        {
+            id:"cpu3",
+            name:"CPU3",
+            hp:20,
+            maxHp:20
+        },
+
+        {
+            id:"cpu4",
+            name:"CPU4",
+            hp:20,
+            maxHp:20
+        }
+
+    ];
+
+    game.players.forEach(player=>{
+
+        renderPlayer(player);
+
+    });
+
+}
+
+/*==============================
+プレイヤー表示
+==============================*/
+
+function renderPlayer(player){
+
+    const element=document.getElementById(player.id);
+
+    element.innerHTML=`
+
+        <strong>${player.name}</strong>
+
+        <br>
+
+        ❤️ ${player.hp}/${player.maxHp}
+
+        <br>
+
+        <small style="font-size:10px;color:#9fe9ff;">
+
+            ${player.ability}
+
+        </small>
+
+        <div class="hpBar">
+
+            <div class="hp"
+                 style="width:${player.hp/player.maxHp*100}%;">
+            </div>
+
+        </div>
+
+    `;
+
+}
+
 /*==============================
 山札生成
 ==============================*/
@@ -180,9 +232,8 @@ function createDeck(){
 
     game.deck = [];
 
-    cardData.forEach(card => {
+    cardData.forEach(card=>{
 
-        // 今は各カードを2枚ずつ入れる
         game.deck.push({...card});
         game.deck.push({...card});
 
@@ -190,31 +241,34 @@ function createDeck(){
 
     shuffleDeck();
 
+    addLog("山札を作成しました。");
+
 }
 
 /*==============================
-山札シャッフル
+シャッフル
 ==============================*/
 
 function shuffleDeck(){
 
-    for(let i = game.deck.length - 1; i > 0; i--){
+    for(let i=game.deck.length-1;i>0;i--){
 
-        const j = Math.floor(Math.random() * (i + 1));
+        const j=Math.floor(Math.random()*(i+1));
 
-        [game.deck[i], game.deck[j]] =
-        [game.deck[j], game.deck[i]];
+        [game.deck[i],game.deck[j]]=
+        [game.deck[j],game.deck[i]];
 
     }
 
 }
+
 /*==============================
-初期手札
+カードを引く
 ==============================*/
 
 function drawCard(){
 
-    if(game.deck.length === 0){
+    if(game.deck.length===0){
 
         addLog("山札がありません。");
 
@@ -226,136 +280,123 @@ function drawCard(){
 
 }
 
-function setupGame(){
-
-    game.deck = [];
-
-    game.trash = [];
-
-    game.players = [];
-
-    createDeck();
-
-    drawOpeningHand();
-
-    renderHand();
-
-console.log("初期手札", game.hand);
-
-    addLog("山札を作成しました。");
-
-    addLog("初期手札を2枚配りました。");
-
-}
-/*==============================
-プレイヤーの手札
-==============================*/
-
-game.hand = [];
-
-/*==============================
-カードを引く
-==============================*/
-
-function drawToHand(){
-
-    const card = drawCard();
-
-    if(card){
-
-        game.hand.push(card);
-
-    }
-
-}
-
 /*==============================
 初期手札
 ==============================*/
 
 function drawOpeningHand(){
 
-    game.hand = [];
+    game.hand=[];
 
-    drawToHand();
+    for(let i=0;i<2;i++){
 
-    drawToHand();
+        const card=drawCard();
+
+        if(card){
+
+            game.hand.push(card);
+
+        }
+
+    }
+
+    addLog("初期手札を2枚配りました。");
 
 }
 /*==============================
-カード表示
+ログ
+==============================*/
+
+function addLog(text){
+
+    const log=document.getElementById("log");
+
+    log.innerHTML+="<br>"+text;
+
+    log.scrollTop=log.scrollHeight;
+
+}
+
+/*==============================
+手札表示
 ==============================*/
 
 function renderHand(){
 
-    const hand = document.getElementById("hand");
+    const hand=document.getElementById("hand");
 
-    hand.innerHTML = "";
+    hand.innerHTML="";
 
     game.hand.forEach(card=>{
 
         hand.appendChild(createCard(card));
 
     });
-alert("手札：" + game.hand.length);
+
 }
+
 /*==============================
 カード生成
 ==============================*/
 
 function createCard(card){
 
-    const element = document.createElement("div");
+    const element=document.createElement("div");
 
-    element.className = "card";
+    element.className="card";
 
-    if(card.type === "attack"){
+    switch(card.type){
 
-        element.classList.add("cardAttack");
+        case "attack":
+            element.classList.add("cardAttack");
+            break;
 
-    }
+        case "defense":
+            element.classList.add("cardDefense");
+            break;
 
-    else if(card.type === "defense"){
+        case "ability":
+            element.classList.add("cardAbility");
+            break;
 
-        element.classList.add("cardDefense");
-
-    }
-
-    else if(card.type === "ability"){
-
-        element.classList.add("cardAbility");
-
-    }
-
-    else if(card.type === "field"){
-
-        element.classList.add("cardField");
+        case "field":
+            element.classList.add("cardField");
+            break;
 
     }
 
-    element.innerHTML = `
+    element.innerHTML=`
 
-        <div class="cardType">${getCardIcon(card.type)}</div>
+        <div class="cardType">
 
-        <div class="cardName">${card.name}</div>
+            ${getCardIcon(card.type)}
+
+        </div>
+
+        <div class="cardName">
+
+            ${card.name}
+
+        </div>
 
         <div class="cardAttribute">
 
-    ${getCardAttribute(card)}
+            ${getCardAttribute(card)}
 
-</div>
+        </div>
 
-<div class="cardPower">
+        <div class="cardPower">
 
-    ${getCardPower(card)}
+            ${getCardPower(card)}
 
-</div>
+        </div>
 
     `;
 
     return element;
 
 }
+
 /*==============================
 カードアイコン
 ==============================*/
@@ -382,21 +423,22 @@ function getCardIcon(type){
     }
 
 }
+
 /*==============================
-カード情報
+カード能力表示
 ==============================*/
 
 function getCardPower(card){
 
-    if(card.type === "attack"){
+    if(card.type==="attack"){
 
-        return "ATK " + card.damage;
+        return "ATK "+card.damage;
 
     }
 
-    if(card.type === "defense"){
+    if(card.type==="defense"){
 
-        return "HP " + card.hp;
+        return "HP "+card.hp;
 
     }
 
@@ -413,5 +455,246 @@ function getCardAttribute(card){
     }
 
     return "";
+
+}
+/*==============================
+プレイヤーデータ
+==============================*/
+
+const eraserData = [
+
+    {
+        name:"MONO",
+        hp:20,
+        ability:"HP満タンなら受けるダメージ-5"
+    },
+
+    {
+        name:"レーダー",
+        hp:17,
+        ability:"HP10以下なら攻撃+5"
+    },
+
+    {
+        name:"アーチ",
+        hp:17,
+        ability:"2マス以上離れた相手への攻撃+3"
+    },
+
+    {
+        name:"ぺんてるアイン",
+        hp:14,
+        ability:"元の攻撃力4以下なら+4"
+    },
+
+    {
+        name:"マークシート",
+        hp:16,
+        ability:"貫通攻撃+6"
+    }
+
+];
+/*==============================
+消しゴムをランダムに選ぶ
+==============================*/
+
+function createRandomErasers(){
+
+    const list = [...eraserData];
+
+    shuffleArray(list);
+
+    game.players = [];
+
+    const ids = [
+
+        "player",
+        "cpu1",
+        "cpu2",
+        "cpu3",
+        "cpu4"
+
+    ];
+
+    for(let i=0;i<5;i++){
+
+        game.players.push({
+
+            id:ids[i],
+
+            name:list[i].name,
+
+            hp:list[i].hp,
+
+            maxHp:list[i].hp,
+
+            ability:list[i].ability,
+
+            attack:null,
+
+            defenses:[],
+
+            field:null,
+
+            alive:true
+
+        });
+
+    }
+
+}
+
+/*==============================
+配列シャッフル
+==============================*/
+
+function shuffleArray(array){
+
+    for(let i=array.length-1;i>0;i--){
+
+        const j=Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]]=[array[j],array[i]];
+
+    }
+
+}
+/*==============================
+プレイヤー表示更新
+==============================*/
+
+function updatePlayers(){
+
+    game.players.forEach(player=>{
+
+        const element=document.getElementById(player.id);
+
+        if(!element) return;
+
+        element.innerHTML=`
+
+            <strong>${player.name}</strong>
+
+            <br>
+
+            ❤️ ${player.hp}/${player.maxHp}
+
+            <br>
+
+            <small style="font-size:10px;color:#9fe9ff;">
+
+                ${player.ability}
+
+            </small>
+
+            <div class="hpBar">
+
+                <div class="hp"
+                    style="width:${player.hp/player.maxHp*100}%;">
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+/*==============================
+生存判定
+==============================*/
+
+function checkAlive(){
+
+    game.players.forEach(player=>{
+
+        if(player.hp<=0){
+
+            player.hp=0;
+
+            player.alive=false;
+
+        }
+
+    });
+
+}
+
+/*==============================
+生き残り人数
+==============================*/
+
+function getAlivePlayers(){
+
+    return game.players.filter(player=>player.alive);
+
+}
+/*==============================
+プレイヤー取得
+==============================*/
+
+function getPlayer(id){
+
+    return game.players.find(player=>player.id===id);
+
+}
+
+/*==============================
+ダメージ
+==============================*/
+
+function damagePlayer(id,damage){
+
+    const player=getPlayer(id);
+
+    if(!player) return;
+
+    if(!player.alive) return;
+
+    player.hp-=damage;
+
+    if(player.hp<0){
+
+        player.hp=0;
+
+    }
+
+    addLog(player.name+" に "+damage+" ダメージ！");
+
+    checkAlive();
+
+    updatePlayers();
+
+    checkWinner();
+
+}
+
+/*==============================
+勝者判定
+==============================*/
+
+function checkWinner(){
+
+    const alive=getAlivePlayers();
+
+    if(alive.length===1){
+
+        game.winner=alive[0];
+
+        addLog("");
+
+        addLog("🏆 "+alive[0].name+" の勝利！！");
+
+    }
+
+}
+/*==============================
+テスト
+==============================*/
+
+window.testDamage=function(){
+
+    damagePlayer("cpu1",5);
 
 }

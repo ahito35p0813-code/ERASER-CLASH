@@ -1,6 +1,6 @@
 /*====================================
 ERASER CLASH
-Version 0.1.0
+Version 0.2.0
 ====================================*/
 
 *{
@@ -22,13 +22,13 @@ body{
 }
 
 /*==============================
-画面
+共通画面
 ==============================*/
 
 .screen{
+
     position:absolute;
-    top:0;
-    left:0;
+    inset:0;
 
     width:100vw;
     height:100vh;
@@ -39,13 +39,14 @@ body{
     align-items:center;
 
     background:
-        radial-gradient(circle at top,#214f92 0%,#101827 55%,#06080f 100%);
+    radial-gradient(circle at top,#214f92 0%,#101827 55%,#06080f 100%);
 
-    z-index:1;
 }
 
 .hidden{
-    display:none;
+
+    display:none !important;
+
 }
 
 /*==============================
@@ -56,58 +57,54 @@ h1{
 
     font-size:60px;
 
-    letter-spacing:5px;
+    letter-spacing:6px;
 
     text-shadow:
 
-        0 0 12px #44c8ff,
-
-        0 0 28px #008cff,
-
-        0 0 45px #008cff;
+    0 0 12px #44c8ff,
+    0 0 30px #008cff,
+    0 0 55px #008cff;
 
 }
 
 .subTitle{
 
     margin-top:10px;
+    margin-bottom:40px;
 
-    margin-bottom:35px;
-
-    color:#8fe1ff;
+    color:#9fe9ff;
 
     letter-spacing:4px;
 
-    text-shadow:0 0 10px #4ecfff;
-
 }
+
 /*==============================
 ボタン
 ==============================*/
 
 button{
 
-    width:250px;
-
+    width:260px;
     height:60px;
 
     margin:8px;
 
     border:none;
+    border-radius:18px;
 
-    border-radius:16px;
-
-    background:linear-gradient(180deg,#1b6fd3,#12498d);
+    background:
+    linear-gradient(#2286ff,#1658b8);
 
     color:white;
 
     font-size:20px;
-
     font-weight:bold;
 
-    border:2px solid #57d4ff;
+    border:2px solid #63d8ff;
 
-    box-shadow:0 0 15px rgba(0,170,255,.45);
+    box-shadow:
+
+    0 0 15px rgba(0,170,255,.5);
 
     transition:.2s;
 
@@ -118,8 +115,6 @@ button{
 button:hover{
 
     transform:scale(1.05);
-
-    box-shadow:0 0 25px rgba(80,210,255,.9);
 
 }
 
@@ -132,7 +127,6 @@ button:active{
 button:disabled{
 
     opacity:.45;
-
     cursor:default;
 
 }
@@ -142,39 +136,32 @@ button:disabled{
 ==============================*/
 
 #gameScreen{
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    width:100vw;
-    height:100vh;
+
     justify-content:flex-start;
     align-items:stretch;
-}
 
-/*==============================
-上部UI
-==============================*/
+}
 
 #topBar{
 
     width:100%;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
     padding:18px;
 
 }
+/*==============================
+山札・捨札
+==============================*/
 
 #deckArea,
 #trashArea{
 
-    width:90px;
-
-    height:75px;
+    width:95px;
+    height:80px;
 
     border-radius:16px;
 
@@ -183,27 +170,29 @@ button:disabled{
     background:rgba(255,255,255,.08);
 
     display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
     flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
     font-weight:bold;
 
-    box-shadow:0 0 15px rgba(0,170,255,.45);
+    box-shadow:
+    0 0 15px rgba(0,170,255,.45);
 
 }
+
 /*==============================
 フィールド
 ==============================*/
 
 #field{
+
     position:relative;
+
     flex:1;
+
     width:100%;
-    min-height:0;
+
 }
 
 /*==============================
@@ -216,15 +205,17 @@ button:disabled{
 
     width:120px;
 
-    min-height:80px;
+    min-height:82px;
 
     padding:10px;
 
-    background:rgba(255,255,255,.08);
+    border-radius:18px;
 
     border:2px solid #57d4ff;
 
-    border-radius:18px;
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(8px);
 
     color:white;
 
@@ -232,9 +223,8 @@ button:disabled{
 
     transform:translate(-50%,-50%);
 
-    backdrop-filter:blur(8px);
-
-    box-shadow:0 0 15px rgba(0,170,255,.45);
+    box-shadow:
+    0 0 15px rgba(0,170,255,.45);
 
 }
 
@@ -245,7 +235,6 @@ button:disabled{
 #cpu1{
 
     left:50%;
-
     top:12%;
 
 }
@@ -253,91 +242,28 @@ button:disabled{
 #cpu2{
 
     left:82%;
-
     top:35%;
 
 }
 
 #cpu3{
 
-    left:70%;
-
-    top:68%;
+    left:68%;
+    top:70%;
 
 }
 
 #cpu4{
 
-    left:30%;
-
-    top:68%;
+    left:32%;
+    top:70%;
 
 }
 
 #player{
 
     left:50%;
-
-    top:82%;
-
-}
-
-/*==============================
-ログ
-==============================*/
-
-#log{
-    position:absolute;
-    right:10px;
-    top:90px;
-
-    width:170px;
-    height:120px;
-
-    z-index:10;
-}
-
-/*==============================
-手札
-==============================*/
-
-#hand{
-
-    height:120px;
-
-    border-top:2px solid #57d4ff;
-
-    background:rgba(0,0,0,.25);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:10px;
-
-}
-
-/*==============================
-カード枠
-==============================*/
-
-.cardSlot{
-
-    width:70px;
-
-    height:100px;
-
-    border-radius:12px;
-
-    border:2px solid #57d4ff;
-
-    background:rgba(255,255,255,.08);
-
-    box-shadow:0 0 10px rgba(0,170,255,.4);
+    top:90%;
 
 }
 
@@ -355,7 +281,7 @@ HPバー
 
     background:#333;
 
-    border-radius:10px;
+    border-radius:20px;
 
     overflow:hidden;
 
@@ -364,21 +290,84 @@ HPバー
 .hp{
 
     width:100%;
-
     height:100%;
 
-    background:linear-gradient(90deg,#ff4d4d,#ff8d8d);
+    background:
+    linear-gradient(90deg,#ff5050,#ff9c9c);
+
+}
+
+/*==============================
+ログ
+==============================*/
+
+#log{
+
+    position:absolute;
+
+    right:15px;
+    top:20px;
+
+    width:200px;
+    height:140px;
+
+    padding:10px;
+
+    overflow-y:auto;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.08);
+
+    border:2px solid #57d4ff;
+
+    box-shadow:
+    0 0 15px rgba(0,170,255,.45);
+
+    font-size:12px;
 
 }
 /*==============================
-カードデザイン
+手札
+==============================*/
+
+#hand{
+
+    width:100%;
+
+    min-height:160px;
+
+    padding:12px;
+
+    border-top:2px solid #57d4ff;
+
+    background:rgba(0,0,0,.28);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+}
+
+/*==============================
+カード
 ==============================*/
 
 .card{
 
-    width:90px;
+    flex-shrink:0;
 
-    height:130px;
+    width:95px;
+
+    height:135px;
 
     border-radius:14px;
 
@@ -402,37 +391,26 @@ HPバー
 
     transition:.2s;
 
+    cursor:pointer;
+
 }
 
 .card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-10px) scale(1.05);
 
     box-shadow:0 0 20px rgba(80,210,255,.8);
 
 }
 
-.cardName{
+.card:active{
 
-    font-size:13px;
-
-    text-align:center;
-
-    font-weight:bold;
+    transform:translateY(-4px) scale(.98);
 
 }
 
-.cardPower{
-
-    font-size:18px;
-
-    color:#ffe36b;
-
-    font-weight:bold;
-
-}
 /*==============================
-カードタイプ
+カード種類
 ==============================*/
 
 .cardAttack{
@@ -477,6 +455,16 @@ HPバー
 
 }
 
+.cardName{
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+}
+
 .cardAttribute{
 
     font-size:11px;
@@ -485,60 +473,23 @@ HPバー
 
 }
 
+.cardPower{
+
+    font-size:18px;
+
+    color:#ffe36b;
+
+    font-weight:bold;
+
+}
+
 .cardDescription{
 
     font-size:10px;
 
-    text-align:center;
-
     line-height:1.2;
 
-}
-/*==============================
-手札のカード
-==============================*/
-
-#hand{
-
-    height:150px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:12px;
-
-    padding:10px;
-
-    overflow-x:auto;
-
-    overflow-y:hidden;
-
-}
-
-/*==============================
-カードアニメーション
-==============================*/
-
-.card{
-
-    flex-shrink:0;
-
-    cursor:pointer;
-
-}
-
-.card:hover{
-
-    transform:translateY(-10px) scale(1.05);
-
-}
-
-.card:active{
-
-    transform:translateY(-4px) scale(.98);
+    text-align:center;
 
 }
 
