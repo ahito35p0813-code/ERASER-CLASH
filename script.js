@@ -329,9 +329,17 @@ function renderHand(){
 
     game.hand.forEach(card=>{
 
-        hand.appendChild(createCard(card));
+    const cardElement=createCard(card);
 
-    });
+    if(game.equippedAttack===card){
+
+        cardElement.style.outline="4px solid gold";
+
+    }
+
+    hand.appendChild(cardElement);
+
+});
 
 }
 
@@ -393,7 +401,17 @@ function createCard(card){
 
     `;
 
-    return element;
+  element.addEventListener("click",()=>{
+
+    if(card.type==="attack"){
+
+        equipAttack(card);
+
+    }
+
+});
+
+return element;
 
 }
 
@@ -696,5 +714,24 @@ function checkWinner(){
 window.testDamage=function(){
 
     damagePlayer("cpu1",5);
+
+}
+/*==============================
+装備中の攻カード
+==============================*/
+
+game.equippedAttack=null;
+
+/*==============================
+攻カード装備
+==============================*/
+
+function equipAttack(card){
+
+    game.equippedAttack=card;
+
+    addLog("⚔️ "+card.name+" を装備した");
+
+    renderHand();
 
 }
