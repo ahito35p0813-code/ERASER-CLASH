@@ -401,7 +401,9 @@ function createCard(card){
 
     `;
 
-  element.addEventListener("click",()=>{
+element.addEventListener("click",()=>{
+
+    alert(card.name);
 
     if(card.type==="attack"){
 
