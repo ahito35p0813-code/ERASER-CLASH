@@ -37,6 +37,11 @@ body{
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
+    background:
+        radial-gradient(circle at top,#214f92 0%,#101827 55%,#06080f 100%);
+
+    z-index:1;
 }
 
 .hidden{
