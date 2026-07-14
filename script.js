@@ -773,6 +773,8 @@ function enablePlayerClick(){
 
 function attackPlayer(target){
 
+    alert("attack");
+
     if(!game.equippedAttack){
 
         addLog("先に攻カードを装備してください。");
