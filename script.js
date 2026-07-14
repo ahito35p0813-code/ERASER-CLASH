@@ -129,6 +129,8 @@ function startGame(){
     drawOpeningHand();
 
     renderHand();
+    
+    enablePlayerClick();
 
     addLog("ゲーム開始！");
     addLog("CPUレベル：" + game.level);
@@ -735,5 +737,97 @@ function equipAttack(card){
     addLog("⚔️ "+card.name+" を装備した");
 
     renderHand();
+
+}
+/*==============================
+プレイヤークリック有効化
+==============================*/
+
+function enablePlayerClick(){
+
+    game.players.forEach(player=>{
+
+        const element=document.getElementById(player.id);
+
+        if(!element) return;
+
+        element.onclick=()=>{
+
+            if(player.id==="player"){
+
+                return;
+
+            }
+
+            attackPlayer(player);
+
+        };
+
+    });
+
+}
+
+/*==============================
+攻撃
+==============================*/
+
+function attackPlayer(target){
+
+    if(!game.equippedAttack){
+
+        addLog("先に攻カードを装備してください。");
+
+        return;
+
+    }
+
+    damagePlayer(
+
+        target.id,
+
+        game.equippedAttack.damage
+
+    );
+
+    addLog(
+
+        "⚔️ "+target.name+"へ攻撃！"
+
+    );
+
+}
+/*==============================
+ダメージ処理
+==============================*/
+
+function damagePlayer(id,damage){
+
+    const player=game.players.find(p=>p.id===id);
+
+    if(!player){
+
+        return;
+
+    }
+
+    player.hp-=damage;
+
+    if(player.hp<0){
+
+        player.hp=0;
+
+    }
+
+    renderPlayer(player);
+
+    addLog(
+
+        player.name+
+
+        " に "+damage+
+
+        "ダメージ！"
+
+    );
 
 }
