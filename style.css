@@ -72,3 +72,21 @@ h1{
 .menu-btn:hover{
     transform:scale(1.05);
 }
+#logo{
+    width:90%;
+    max-width:700px;
+    display:block;
+    margin:0 auto 30px;
+    animation:logoFade 1.2s ease;
+}
+
+@keyframes logoFade{
+    from{
+        opacity:0;
+        transform:scale(0.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
