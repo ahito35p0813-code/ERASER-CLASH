@@ -107,3 +107,122 @@ h1{
         scale:1;
     }
 }
+/* バトル画面 */
+
+#battle-screen{
+    display:none;
+    width:100vw;
+    height:100vh;
+    background:#111;
+}
+
+/* 円形 */
+
+#arena{
+
+    position:relative;
+    width:100%;
+    height:100%;
+
+}
+
+/* プレイヤー */
+
+.player{
+
+    position:absolute;
+    text-align:center;
+
+}
+
+.eraser{
+
+    width:90px;
+    height:90px;
+    background:#4fc3ff;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    margin:auto;
+
+}
+
+.hp{
+
+    margin-top:8px;
+
+}
+
+/* 配置 */
+
+#cpu2{
+
+    top:5%;
+    left:50%;
+    transform:translateX(-50%);
+
+}
+
+#cpu1{
+
+    top:28%;
+    left:10%;
+
+}
+
+#cpu3{
+
+    top:28%;
+    right:10%;
+
+}
+
+#cpu4{
+
+    bottom:18%;
+    left:20%;
+
+}
+
+#me{
+
+    bottom:5%;
+    left:50%;
+    transform:translateX(-50%);
+
+}
+
+/* 中央 */
+
+#center{
+
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    gap:30px;
+
+}
+
+.deck,
+.trash{
+
+    width:90px;
+    height:120px;
+
+    background:#333;
+
+    border:2px solid white;
+
+    border-radius:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
