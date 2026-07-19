@@ -73,10 +73,10 @@ h1{
     transform:scale(1.05);
 }
 #logo{
-    width:90%;
-    max-width:700px;
+    width:95%;
+    max-width:800px;
     display:block;
-    margin:0 auto 30px;
+    margin:0 auto 20px;
     animation:logoFade 0.8s ease;
 }
 
@@ -89,4 +89,21 @@ h1{
         opacity:1;
         transform:scale(1);
     }
+}
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+#logo{
+    animation:
+        logoFade 0.8s ease,
+        float 3s ease-in-out infinite;
 }
