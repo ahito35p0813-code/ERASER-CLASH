@@ -93,14 +93,17 @@ h1{
 }
 @keyframes float{
     0%{
-    margin-top:0px;
-}
+        margin-top:0px;
+        scale:1;
+    }
 
-50%{
-    margin-top:-8px;
-}
+    50%{
+        margin-top:-8px;
+        scale:1.03;
+    }
 
-100%{
-    margin-top:0px;
-}
+    100%{
+        margin-top:0px;
+        scale:1;
+    }
 }
