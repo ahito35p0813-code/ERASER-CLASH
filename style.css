@@ -226,3 +226,78 @@ h1{
     align-items:center;
 
 }
+/* 自分 */
+
+#me{
+
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%);
+    z-index:100;
+
+}
+
+.big{
+
+    width:90px;
+    height:90px;
+
+    border:4px solid white;
+    border-radius:15px;
+
+    background:#ddd;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:10px auto;
+
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.equip{
+
+    display:flex;
+    justify-content:center;
+    gap:8px;
+
+    margin-bottom:8px;
+
+}
+
+.defense,
+.field,
+.attack{
+
+    width:55px;
+    height:70px;
+
+    border:2px solid white;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#333;
+
+}
+
+.player-hand{
+
+    width:260px;
+    height:90px;
+
+    margin-top:15px;
+
+    border:2px solid white;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
