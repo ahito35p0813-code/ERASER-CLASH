@@ -4,23 +4,23 @@ const battleScreen = document.getElementById("battle-screen");
 // 最初はバトル画面を隠す
 battleScreen.style.display = "none";
 
-// タイトルを押したらメニュー
-titleScreen.addEventListener("click", () => {
+// タイトルを押す
+titleScreen.addEventListener("click", function () {
 
     titleScreen.innerHTML = `
         <h1>MENU</h1>
 
-        <button id="cpuBtn" class="menu-btn">CPUバトル</button>
-        <button class="menu-btn">ルールブック</button>
-        <button class="menu-btn">カード図鑑</button>
-        <button class="menu-btn">消しゴム図鑑</button>
-        <button class="menu-btn">NEWS</button>
-        <button class="menu-btn">設定</button>
+        <button id="cpuBtn">CPUバトル</button>
+        <button>ルールブック</button>
+        <button>カード図鑑</button>
+        <button>消しゴム図鑑</button>
+        <button>NEWS</button>
+        <button>設定</button>
     `;
 
-    document.getElementById("cpuBtn").onclick = () => {
+    document.getElementById("cpuBtn").onclick = function () {
         titleScreen.style.display = "none";
         battleScreen.style.display = "block";
     };
 
-});
+}, { once: true });
