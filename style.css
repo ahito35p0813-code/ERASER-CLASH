@@ -93,12 +93,14 @@ h1{
 }
 @keyframes float{
     0%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(-8px);
-    }
-    100%{
-        transform:translateY(0px);
-    }
+    margin-top:0px;
+}
+
+50%{
+    margin-top:-8px;
+}
+
+100%{
+    margin-top:0px;
+}
 }
