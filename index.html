@@ -1,97 +1,198 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ERASER CLASH</title>
 
-  <link rel="stylesheet" href="style.css">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ERASER CLASH</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-  <div id="title-screen">
+<!-- タイトル画面 -->
 
-    <img src="8F5B4514-4724-4D1F-BA23-085E0B13F7E8.png" id="logo" alt="ERASER CLASH">
+<div id="title-screen">
+
+    <img src="8F5B4514-4724-4D1F-BA23-085E0B13F7E8.png"
+         id="logo">
 
     <p class="subtitle">
-      最後まで消し合うサバイバル
+        最後まで消し合うサバイバル
     </p>
 
     <p id="tap">
-      TAP TO START
+        TAP TO START
     </p>
 
-  </div>
+</div>
 
-　<!-- バトル画面 -->
+<!-- メニュー -->
+
+<div id="menu-screen">
+
+    <h1>MENU</h1>
+
+    <button id="cpuBattleBtn"
+            class="menu-btn">
+        CPUバトル
+    </button>
+
+    <button class="menu-btn">
+        ルールブック
+    </button>
+
+    <button class="menu-btn">
+        カード図鑑
+    </button>
+
+    <button class="menu-btn">
+        消しゴム図鑑
+    </button>
+
+    <button class="menu-btn">
+        NEWS
+    </button>
+
+    <button class="menu-btn">
+        設定
+    </button>
+
+</div>
+
+<!-- バトル画面 -->
+
 <div id="battle-screen">
 
-    <div id="arena">
+<div id="arena">
+    <!-- CPUエリア -->
 
-        <div class="player cpu" id="cpu2">
-            <div class="eraser">CPU2</div>
-            <div class="hp">HP 20</div>
+    <div id="cpu1" class="player cpu">
+        <div class="player-name">CPU1</div>
+        <div class="hp">HP:20</div>
+
+        <div class="equipment">
+            <div class="defense-area"></div>
+            <div class="field-area"></div>
         </div>
 
-        <div class="player cpu" id="cpu1">
-            <div class="eraser">CPU1</div>
-            <div class="hp">HP 20</div>
-        </div>
+        <div class="eraser">🧽</div>
 
-        <div class="player cpu" id="cpu3">
-            <div class="eraser">CPU3</div>
-            <div class="hp">HP 20</div>
-        </div>
-
-        <div class="player cpu" id="cpu4">
-            <div class="eraser">CPU4</div>
-            <div class="hp">HP 20</div>
-        </div>
-
-        <div class="player me" id="me">
-
-    <div class="hp">HP20</div>
-
-    <div class="equip">
-
-        <div class="defense">防</div>
-        <div class="defense">防</div>
-        <div class="field">場</div>
-
+        <div class="attack-area"></div>
     </div>
 
-    <div class="eraser big">
-        自分
+    <div id="cpu2" class="player cpu">
+        <div class="player-name">CPU2</div>
+        <div class="hp">HP:20</div>
+
+        <div class="equipment">
+            <div class="defense-area"></div>
+            <div class="field-area"></div>
+        </div>
+
+        <div class="eraser">🧽</div>
+
+        <div class="attack-area"></div>
     </div>
 
-    <div class="attack">
-        攻カード
+    <div id="cpu3" class="player cpu">
+        <div class="player-name">CPU3</div>
+        <div class="hp">HP:20</div>
+
+        <div class="equipment">
+            <div class="defense-area"></div>
+            <div class="field-area"></div>
+        </div>
+
+        <div class="eraser">🧽</div>
+
+        <div class="attack-area"></div>
     </div>
 
-    <div class="hand player-hand">
-        手札
+    <div id="cpu4" class="player cpu">
+        <div class="player-name">CPU4</div>
+        <div class="hp">HP:20</div>
+
+        <div class="equipment">
+            <div class="defense-area"></div>
+            <div class="field-area"></div>
+        </div>
+
+        <div class="eraser">🧽</div>
+
+        <div class="attack-area"></div>
+    </div>
+
+    <!-- 中央エリア -->
+
+    <div id="center-area">
+
+        <div id="deck" class="card-pile">
+            山札
+        </div>
+
+        <div id="trash" class="card-pile">
+            捨て札
+        </div>
+
+    </div>
+        <!-- プレイヤーエリア -->
+
+    <div id="player" class="player">
+
+        <div class="player-name">
+            あなた
+        </div>
+
+        <div class="hp">
+            HP:20
+        </div>
+
+        <div class="equipment">
+
+            <div id="player-defense" class="defense-area">
+                <!-- 防カードが並ぶ -->
+            </div>
+
+            <div id="player-field" class="field-area">
+                <!-- 場カード -->
+            </div>
+
+        </div>
+
+        <div class="eraser">
+            🧽
+        </div>
+
+        <div id="player-attack" class="attack-area">
+            <!-- 攻カード -->
+        </div>
+
     </div>
 
 </div>
 
-        <div id="center">
+<!-- 手札 -->
 
-            <div class="deck">
-                山札
-            </div>
+<div id="hand-area">
 
-            <div class="trash">
-                捨て札
-            </div>
-
-        </div>
-
-    </div>
+    <div class="hand-card">カード</div>
+    <div class="hand-card">カード</div>
+    <div class="hand-card">カード</div>
+    <div class="hand-card">カード</div>
+    <div class="hand-card">カード</div>
 
 </div>
 
-  <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 
 </body>
+
 </html>
