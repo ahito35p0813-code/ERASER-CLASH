@@ -77,7 +77,8 @@ h1{
     max-width:800px;
     display:block;
     margin:0 auto 20px;
-    animation:logoFade 0.8s ease;
+    animation:logoFade 0.8s ease,
+              float 3s ease-in-out infinite;
 }
 
 @keyframes logoFade{
@@ -100,10 +101,4 @@ h1{
     100%{
         transform:translateY(0px);
     }
-}
-
-#logo{
-    animation:
-        logoFade 0.8s ease,
-        float 3s ease-in-out infinite;
 }
