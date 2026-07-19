@@ -13,18 +13,10 @@ titleScreen.addEventListener("click", () => {
         <button class="menu-btn">NEWS</button>
         <button class="menu-btn">設定</button>
     `;
-});
-// CPUバトルボタン
-const cpuButton = document.querySelector(".menu-btn");
+    const cpuButton = document.querySelector(".menu-btn");
 
-// バトル画面
-const battleScreen = document.getElementById("battle-screen");
-
-// メニューを押したら
-cpuButton.addEventListener("click", () => {
-
+cpuButton.onclick = () => {
     titleScreen.style.display = "none";
-
     battleScreen.style.display = "block";
-
+};
 });
