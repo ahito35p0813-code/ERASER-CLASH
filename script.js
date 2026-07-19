@@ -1,6 +1,9 @@
 // タイトル画面
 const titleScreen = document.getElementById("title-screen");
 
+// バトル画面
+const battleScreen = document.getElementById("battle-screen");
+
 // タップしたらメニューへ
 titleScreen.addEventListener("click", () => {
     titleScreen.innerHTML = `
